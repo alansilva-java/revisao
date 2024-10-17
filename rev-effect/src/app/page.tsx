@@ -1,25 +1,24 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react";
+import { VideoPlayer } from "./components/VideoPlayer";
+
 
 const Page = () => {
+    const [playing, setPlaying] = useState(false);
 
-    const [firstName, setFirstName] = useState('Alan')
-    const [lastName , setLastName] = useState('Silva')
-
-    const fullName = firstName + ' ' + lastName
 
     return (
       <div className="">
-        <p className="mb-10 flex justify-center">Meu nome é {fullName} </p>           
-          <hr />
-          <div className="flex justify-center">
-
-              <button className="border border-blue-400 m-3 p-3" onClick={()=> setFirstName('Samir')}>Mudar para Samir</button>
-              <button className="border border-blue-400 m-3 p-3" onClick={()=> setLastName('Jucy')}>Mudar para Jucy</button>
-
+          <div className="border border-white p-3 mb-4">
+            <p className="text-2xl text-blue-400 mb-3">{playing ? 'RODANDO' : 'PAUSADO'}</p>
+            <button className="bg-blue-400 rounded-md p-3 text-black" onClick={()=>setPlaying(!playing)}>Play/Pause</button>
           </div>
-    
+
+          <VideoPlayer
+              src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+              isPlaying={playing}
+          />
       </div>
 
       

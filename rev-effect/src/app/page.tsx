@@ -2,20 +2,21 @@
 
 import { useState } from "react";
 
-const Page = () => {
 
-const [count, setCount] = useState<number>(0)
+const Page = () => {
+  const [showSecret,SetShowSecret]= useState(false)
 
   const handleClickButton = () => {
-      setCount(count+1);
+    SetShowSecret(!showSecret)   
   }
 
 
     return (
       <div className="w-screen h-screen flex flex-col justify-center items-center text-3xl">
-        <p>{count}</p>
-        <button onClick={handleClickButton} className="bg-blue-500 p3 rounded-md">+1</button>
-
+        <button onClick={handleClickButton} className="bg-blue-500 p3 rounded-md">{showSecret ? 'Ocultar' : 'Mostrar'}</button>
+        {showSecret &&        
+           <div className="bg-blue-500 rounded-md p-3 mt-5">Área Secreta</div>
+        }
       </div>
 
       

@@ -1,24 +1,21 @@
 "use client"
 
 import { useState } from "react";
-import { VideoPlayer } from "./components/VideoPlayer";
-
 
 const Page = () => {
-    const [playing, setPlaying] = useState(false);
+
+const [count, setCount] = useState<number>(0)
+
+  const handleClickButton = () => {
+      setCount(count+1);
+  }
 
 
     return (
-      <div className="">
-          <div className="border border-white p-3 mb-4">
-            <p className="text-2xl text-blue-400 mb-3">{playing ? 'RODANDO' : 'PAUSADO'}</p>
-            <button className="bg-blue-400 rounded-md p-3 text-black" onClick={()=>setPlaying(!playing)}>Play/Pause</button>
-          </div>
+      <div className="w-screen h-screen flex flex-col justify-center items-center text-3xl">
+        <p>{count}</p>
+        <button onClick={handleClickButton} className="bg-blue-500 p3 rounded-md">+1</button>
 
-          <VideoPlayer
-              src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-              isPlaying={playing}
-          />
       </div>
 
       
